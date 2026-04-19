@@ -1,7 +1,4 @@
-
 package domain;
-
-import java.time.Year;
 
 import java.time.Year;
 
@@ -9,7 +6,7 @@ public class VehiculoCombustible extends Vehiculo {
     private double kilometrosPorLitro;
     private double litrosExtra;
 
-    public VehiculoCombustible(String patente, String marca, String modelo, int anio, double capacidadCarga,
+    public VehiculoCombustible(String patente, Marca marca, String modelo, int anio, double capacidadCarga,
                                Sucursal sucursal, double kilometrosPorLitro, double litrosExtra) {
         super(VehiculoTipo.COMBUSTIBLE, patente, marca, modelo, anio, capacidadCarga, sucursal);
         this.kilometrosPorLitro = kilometrosPorLitro;
