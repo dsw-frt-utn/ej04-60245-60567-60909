@@ -8,12 +8,24 @@ public class Persistencia {
     private static ArrayList<Vehiculo> vehiculos = new ArrayList<>();
     private static ArrayList<Responsable> responsables = new ArrayList<>();
     private static ArrayList<Sucursal> sucursales = new ArrayList<>();
-    
+    private static ArrayList<Marca> marcas = new ArrayList<>();
+     
     private static void inicializarResponsables(){
         Responsable r1 = new Responsable("Carlos Gómez", "25444111", "3815551111");
         Responsable r2 = new Responsable("Laura Pérez", "30111222", "3815552222");
         responsables.add(r1);
         responsables.add(r2);
+    }
+    private static void inicializarMarcas() {
+        marcas.add(new Marca("Renault"));
+        marcas.add(new Marca("Ford"));
+        marcas.add(new Marca("Iveco"));
+        marcas.add(new Marca("Mercedes"));
+        marcas.add(new Marca("Toyota"));
+        marcas.add(new Marca("Volkswagen"));
+    }
+    public static ArrayList<Marca> getMarcas() {
+        return marcas;
     }
     
     private static void inicializarSucursales(){
@@ -28,11 +40,16 @@ public class Persistencia {
         Sucursal s1 = sucursales.get(0);
         Sucursal s2 = sucursales.get(1);
         
-        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", "Renault", "Kangoo E-Tech", 2020, 1000, s1, 16);
-        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", "Ford", "E-Transit", 2021, 1300, s2, 16);
+        Marca renault = new Marca("Renault");
+        Marca ford = new Marca("Ford");
+        Marca iveco = new Marca("Iveco");
+        Marca mercedes = new Marca("Mercedes");
+        
+        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", renault, "Kangoo E-Tech", 2020, 1000, s1, 16);
+        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", ford, "E-Transit", 2021, 1300, s2, 16);
 
-        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK", "Iveco", "Daily", 2023, 1200, s1, 8, 1.5);
-        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM", "Mercedes", "Sprinter", 2020, 1200, s2, 7, 1);
+        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK", iveco, "Daily", 2023, 1200, s1, 8, 1.5);
+        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM", mercedes, "Sprinter", 2020, 1200, s2, 7, 1);
         
         vehiculos.add(v1);
         vehiculos.add(v2);
@@ -43,6 +60,9 @@ public class Persistencia {
     public static ArrayList<Vehiculo> getVehiculos(){
         return vehiculos;
     }
+    public static void agregarVehiculo(Vehiculo vehiculo) { //Nuevo para guardarr
+        vehiculos.add(vehiculo);
+    }
     
     public static Optional<Vehiculo> getVehiculo(String patente){
         return vehiculos.stream()
@@ -50,9 +70,13 @@ public class Persistencia {
                 .findFirst();
     }
     
+     public static ArrayList<Sucursal> getSucursales() { //Getter nuevo de ventana
+        return sucursales;
+    }
     public static void inicializar(){
         inicializarResponsables();
         inicializarSucursales();
         inicializarVehiculos();
+        inicializarMarcas();
     }
 }
