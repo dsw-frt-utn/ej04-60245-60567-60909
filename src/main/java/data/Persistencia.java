@@ -16,6 +16,17 @@ public class Persistencia {
         responsables.add(r1);
         responsables.add(r2);
     }
+    private static void inicializarMarcas() {
+        marcas.add(new Marca("Renault"));
+        marcas.add(new Marca("Ford"));
+        marcas.add(new Marca("Iveco"));
+        marcas.add(new Marca("Mercedes"));
+        marcas.add(new Marca("Toyota"));
+        marcas.add(new Marca("Volkswagen"));
+    }
+    public static ArrayList<Marca> getMarcas() {
+        return marcas;
+    }
     
     private static void inicializarSucursales(){
         Sucursal s1 = new Sucursal("SUC01", "Av. Belgrano 1200", "Tucumán", responsables.get(0));
@@ -48,6 +59,9 @@ public class Persistencia {
     public static ArrayList<Vehiculo> getVehiculos(){
         return vehiculos;
     }
+    public static void agregarVehiculo(Vehiculo vehiculo) { //Nuevo para guardarr
+        vehiculos.add(vehiculo);
+    }
     
     public static Optional<Vehiculo> getVehiculo(String patente){
         return vehiculos.stream()
@@ -55,6 +69,9 @@ public class Persistencia {
                 .findFirst();
     }
     
+     public static ArrayList<Sucursal> getSucursales() { //Getter nuevo de ventana
+        return sucursales;
+    }
     public static void inicializar(){
         inicializarResponsables();
         inicializarSucursales();
