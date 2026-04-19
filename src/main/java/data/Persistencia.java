@@ -9,7 +9,7 @@ public class Persistencia {
     private static ArrayList<Responsable> responsables = new ArrayList<>();
     private static ArrayList<Sucursal> sucursales = new ArrayList<>();
     private static ArrayList<Marca> marcas = new ArrayList<>();
-     
+    
     private static void inicializarResponsables(){
         Responsable r1 = new Responsable("Carlos Gómez", "25444111", "3815551111");
         Responsable r2 = new Responsable("Laura Pérez", "30111222", "3815552222");
@@ -36,25 +36,24 @@ public class Persistencia {
         sucursales.add(s2);
     }
     
-    private static void inicializarVehiculos(){
-        Sucursal s1 = sucursales.get(0);
-        Sucursal s2 = sucursales.get(1);
-        
-        Marca renault = new Marca("Renault");
-        Marca ford = new Marca("Ford");
-        Marca iveco = new Marca("Iveco");
-        Marca mercedes = new Marca("Mercedes");
-        
-        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", renault, "Kangoo E-Tech", 2020, 1000, s1, 16);
-        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", ford, "E-Transit", 2021, 1300, s2, 16);
-
-        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK", iveco, "Daily", 2023, 1200, s1, 8, 1.5);
-        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM", mercedes, "Sprinter", 2020, 1200, s2, 7, 1);
-        
-        vehiculos.add(v1);
-        vehiculos.add(v2);
-        vehiculos.add(v3);
-        vehiculos.add(v4);
+    public static ArrayList<Sucursal> getSucursales() { //Getter nuevo de ventana
+        return sucursales;
+    }
+    
+    private static void inicializarMarcas() { //Teniendo clase Marca ya incluida
+        marcas.add(new Marca("Renault"));
+        marcas.add(new Marca("Ford"));
+        marcas.add(new Marca("Iveco"));
+        marcas.add(new Marca("Mercedes"));
+        marcas.add(new Marca("Toyota"));
+        marcas.add(new Marca("Volkswagen"));
+    }
+    public static ArrayList<Marca> getMarcas() {
+        return marcas;
+    }
+    
+    public static void agregarVehiculo(Vehiculo vehiculo) { //Nuevo para guardarr
+        vehiculos.add(vehiculo);
     }
     
     public static ArrayList<Vehiculo> getVehiculos(){
@@ -79,4 +78,18 @@ public class Persistencia {
         inicializarVehiculos();
         inicializarMarcas();
     }
+    
+    private static void inicializarVehiculos(){
+        /*Sucursal s1 = sucursales.get(0);
+        Sucursal s2 = sucursales.get(1);
+        VehiculoElectrico v1 = new VehiculoElectrico("AE123FG", "Renault", "Kangoo E-Tech", 2020, 1000, s1, 16);
+        VehiculoElectrico v2 = new VehiculoElectrico("AF456HI", "Ford", "E-Transit", 2021, 1300, s2, 16);
+        VehiculoCombustible v3 = new VehiculoCombustible("AC789JK", "Iveco", "Daily", 2023, 1200, s1, 8, 1.5);
+        VehiculoCombustible v4 = new VehiculoCombustible("AD321LM", "Mercedes", "Sprinter", 2020, 1200, s2, 7, 1);
+        vehiculos.add(v1);
+        vehiculos.add(v2);
+        vehiculos.add(v3);
+        vehiculos.add(v4);*/
+    }
+    
 }
